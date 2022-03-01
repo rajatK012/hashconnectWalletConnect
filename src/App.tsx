@@ -1,8 +1,10 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import logo from "./logo.svg";
+import "./App.css";
+import { useHashConnectWallet } from "./HashConnectAPIProvider";
 
 function App() {
+  const { connect } = useHashConnectWallet();
   return (
     <div className="App">
       <header className="App-header">
@@ -18,6 +20,7 @@ function App() {
         >
           Learn React
         </a>
+        <button onClick={() => connect()}>Connect TO Wallet</button>
       </header>
     </div>
   );
