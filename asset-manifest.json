@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/static/css/main.073c9b0a.css",
-    "main.js": "/static/js/main.6f054ada.js",
-    "static/js/787.42c65604.chunk.js": "/static/js/787.42c65604.chunk.js",
-    "static/media/logo.svg": "/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
-    "index.html": "/index.html",
-    "main.073c9b0a.css.map": "/static/css/main.073c9b0a.css.map",
-    "main.6f054ada.js.map": "/static/js/main.6f054ada.js.map",
-    "787.42c65604.chunk.js.map": "/static/js/787.42c65604.chunk.js.map"
+    "main.css": "/hashconnectWalletConnect/static/css/main.073c9b0a.css",
+    "main.js": "/hashconnectWalletConnect/static/js/main.a286e92e.js",
+    "static/js/787.42c65604.chunk.js": "/hashconnectWalletConnect/static/js/787.42c65604.chunk.js",
+    "static/media/logo.svg": "/hashconnectWalletConnect/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "index.html": "/hashconnectWalletConnect/index.html",
+    "main.073c9b0a.css.map": "/hashconnectWalletConnect/static/css/main.073c9b0a.css.map",
+    "main.a286e92e.js.map": "/hashconnectWalletConnect/static/js/main.a286e92e.js.map",
+    "787.42c65604.chunk.js.map": "/hashconnectWalletConnect/static/js/787.42c65604.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.073c9b0a.css",
-    "static/js/main.6f054ada.js"
+    "static/js/main.a286e92e.js"
   ]
 }
