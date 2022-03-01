@@ -29,9 +29,9 @@ const INITIAL_SAVE_DATA: SaveData = {
 };
 
 let APP_CONFIG: HashConnectTypes.AppMetadata = {
-  name: "Taskbar",
-  description: "Earn crypto and grow your income.",
-  icon: "https://mytaskbar.io/images/favicon-96x96.png",
+  name: "dApp Example",
+  description: "An example hedera dApp",
+  icon: "https://absolute.url/to/icon.png",
 };
 
 const loadLocalData = (): null | SaveData => {
@@ -102,7 +102,7 @@ export default function HashConnectProvider({
   const [saveData, SetSaveData] = useState<SaveData>(INITIAL_SAVE_DATA);
   const saveDataInLocalStorage = () => {
     console.info("Saving to Localstoregae::=============");
-    let data = JSON.stringify(INITIAL_SAVE_DATA);
+    let data = JSON.stringify(saveData);
     localStorage.setItem("hashconnectData", data);
   };
 
