@@ -4,7 +4,7 @@ import "./App.css";
 import { useHashConnect } from "./HashConnectAPIProvider";
 
 function App() {
-  const { connect, walletData } = useHashConnect();
+  const { connect, walletData, installedExtensions } = useHashConnect();
   const { accountIds, netWork, id } = walletData;
 
   const conCatAccounts = (lastAccs: string, Acc: string) => {
@@ -13,6 +13,14 @@ function App() {
 
   const handleCopy = () => {
     navigator.clipboard.writeText(walletData.pairingString);
+  };
+
+  const handleClick = () => {
+    if (installedExtensions) connect();
+    else
+      alert(
+        "Please install hashconnect wallet extension first. from chrome web store."
+      );
   };
 
   return (
@@ -27,13 +35,15 @@ function App() {
           </div>
         )}
 
+        {!installedExtensions && <p>Wallet is not installed in your browser</p>}
+
         <p>Paring key : {walletData.pairingString.substring(0, 15)}...</p>
 
         <p>
           <button onClick={handleCopy}>Copy Paring String</button>
         </p>
 
-        <button onClick={() => connect()}>Connect TO Wallet</button>
+        <button onClick={handleClick}>Connect TO Wallet</button>
       </header>
     </div>
   );
