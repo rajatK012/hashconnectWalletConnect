@@ -9,7 +9,7 @@ const hashConnect = new HashConnect(true);
 
 ReactDOM.render(
   <React.StrictMode>
-    <HashConnectProvider hashConnect={hashConnect}>
+    <HashConnectProvider hashConnect={hashConnect} debug>
       <App />
     </HashConnectProvider>
   </React.StrictMode>,

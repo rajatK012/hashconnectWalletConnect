@@ -4,22 +4,23 @@ import "./App.css";
 import { useHashConnectWallet } from "./HashConnectAPIProvider";
 
 function App() {
-  const { connect } = useHashConnectWallet();
+  const { connect, walletData } = useHashConnectWallet();
+
+  const handleCopy = () => {
+    navigator.clipboard.writeText(walletData.pairingString);
+  };
+
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
+
+        <p>Paring key : {walletData.pairingString.substring(0, 15)}...</p>
+
         <p>
-          Edit <code>src/App.tsx</code> and save to reload.
+          <button onClick={handleCopy}>Copy Paring String</button>
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+
         <button onClick={() => connect()}>Connect TO Wallet</button>
       </header>
     </div>
