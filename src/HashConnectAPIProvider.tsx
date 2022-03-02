@@ -8,6 +8,9 @@ interface SaveData {
   privateKey: string;
   pairedWalletData: HashConnectTypes.WalletMetadata | null;
   pairedAccounts: string[];
+  netWork?: string;
+  id?: string;
+  accountIds?: string[];
 }
 
 type Networks = "testnet" | "mainnet" | "previewnet";
@@ -23,8 +26,9 @@ interface PropsType {
 export interface HashConnectProviderAPI {
   connect: () => void;
   walletData: SaveData;
-  metaData?: HashConnectTypes.AppMetadata;
   netWork: Networks;
+  metaData?: HashConnectTypes.AppMetadata;
+  installedExtensions: HashConnectTypes.WalletMetadata | null;
 }
 
 const availableExtensions: HashConnectTypes.WalletMetadata[] = [];
@@ -58,6 +62,7 @@ export const HashConnectAPIContext =
     connect: () => null,
     walletData: INITIAL_SAVE_DATA,
     netWork: "testnet",
+    installedExtensions: null,
   });
 
 export default function HashConnectProvider({
@@ -118,11 +123,16 @@ export default function HashConnectProvider({
     }
   };
 
-  const saveDataInLocalStorage = () => {
+  const saveDataInLocalStorage = (data: MessageTypes.ApprovePairing) => {
     if (debug)
       console.info("===============Saving to localstorage::=============");
-    let data = JSON.stringify(saveData);
-    localStorage.setItem("hashconnectData", data);
+    const { metadata, ...restData } = data;
+    SetSaveData((prevSaveData) => {
+      prevSaveData.pairedWalletData = metadata;
+      return { ...prevSaveData, ...restData };
+    });
+    let dataToSave = JSON.stringify(saveData);
+    localStorage.setItem("hashconnectData", dataToSave);
   };
 
   const additionalAccountResponseEventHandler = (
@@ -143,7 +153,7 @@ export default function HashConnectProvider({
   const pairingEventHandler = (data: MessageTypes.ApprovePairing) => {
     if (debug) console.log("===Wallet connected=====", data);
     // Save Data to localStorage
-    saveDataInLocalStorage();
+    saveDataInLocalStorage(data);
   };
 
   useEffect(() => {
@@ -165,16 +175,21 @@ export default function HashConnectProvider({
       hashConnect.foundExtensionEvent.off(foundExtensionEventHandler);
       hashConnect.pairingEvent.off(pairingEventHandler);
     };
-  }, [saveData]);
+  }, []);
 
   const connect = () => {
-    console.log("Pairing String::", saveData.pairingString);
-    hashConnect.connectToLocalWallet(saveData?.pairingString);
+    if (installedExtensions) {
+      if (debug) console.log("Pairing String::", saveData.pairingString);
+      hashConnect.connectToLocalWallet(saveData?.pairingString);
+    } else {
+      if (debug) console.log("====No Extension is not in browser====");
+      return "wallet not installed";
+    }
   };
 
   return (
     <HashConnectAPIContext.Provider
-      value={{ connect, walletData: saveData, netWork }}
+      value={{ connect, walletData: saveData, netWork, installedExtensions }}
     >
       {children}
     </HashConnectAPIContext.Provider>
@@ -193,7 +208,7 @@ const defaultProps: Partial<PropsType> = {
 
 HashConnectProvider.defaultProps = defaultProps;
 
-export function useHashConnectWallet() {
+export function useHashConnect() {
   const value = React.useContext(HashConnectAPIContext);
   return value;
 }
