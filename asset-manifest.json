@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/hashconnectWalletConnect/static/css/main.073c9b0a.css",
-    "main.js": "/hashconnectWalletConnect/static/js/main.cf965685.js",
+    "main.js": "/hashconnectWalletConnect/static/js/main.89427e02.js",
     "static/js/787.42c65604.chunk.js": "/hashconnectWalletConnect/static/js/787.42c65604.chunk.js",
     "static/media/logo.svg": "/hashconnectWalletConnect/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
     "index.html": "/hashconnectWalletConnect/index.html",
     "main.073c9b0a.css.map": "/hashconnectWalletConnect/static/css/main.073c9b0a.css.map",
-    "main.cf965685.js.map": "/hashconnectWalletConnect/static/js/main.cf965685.js.map",
+    "main.89427e02.js.map": "/hashconnectWalletConnect/static/js/main.89427e02.js.map",
     "787.42c65604.chunk.js.map": "/hashconnectWalletConnect/static/js/787.42c65604.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.073c9b0a.css",
-    "static/js/main.cf965685.js"
+    "static/js/main.89427e02.js"
   ]
 }
