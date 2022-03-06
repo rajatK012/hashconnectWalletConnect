@@ -131,14 +131,14 @@ export default function HashConnectProvider({
       prevSaveData.pairedWalletData = metadata;
       return { ...prevSaveData, ...restData };
     });
-    let dataToSave = JSON.stringify(saveData);
+    let dataToSave = JSON.stringify(data);
     localStorage.setItem("hashconnectData", dataToSave);
   };
 
   const additionalAccountResponseEventHandler = (
     data: MessageTypes.AdditionalAccountResponse
   ) => {
-    if (debug) console.debug("additionalAccountResponseEvent", data);
+    if (debug) console.debug("=====additionalAccountResponseEvent======", data);
     // Do a thing
   };
 
@@ -151,7 +151,7 @@ export default function HashConnectProvider({
   };
 
   const pairingEventHandler = (data: MessageTypes.ApprovePairing) => {
-    if (debug) console.log("===Wallet connected=====", data);
+    if (debug) console.log("====pairingEvent:::Wallet connected=====", data);
     // Save Data to localStorage
     saveDataInLocalStorage(data);
   };
