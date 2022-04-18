@@ -48,7 +48,7 @@ let APP_CONFIG: HashConnectTypes.AppMetadata = {
 };
 
 const loadLocalData = (): null | SaveData => {
-  let foundData = localStorage.getItem("  hashConnectData");
+  let foundData = localStorage.getItem("hashconnectData");
 
   if (foundData) {
     const saveData: SaveData = JSON.parse(foundData);
