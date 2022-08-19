@@ -4,8 +4,7 @@ import "./App.css";
 import { useHashConnect } from "./HashConnectAPIProvider-1.10";
 
 function App() {
-  const { connectToExtension , disconnect , pairingData , availableExtension , pairingString } = useHashConnect();
-  const { accountIds , network } = pairingData!;
+  const { connectToExtension , disconnect , pairingData , availableExtension , network , pairingString } = useHashConnect();
 
   const conCatAccounts = (lastAccs: string, Acc: string) => {
     return lastAccs + " " + Acc;
@@ -28,11 +27,11 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        {accountIds && accountIds?.length > 0 && (
+        {pairingData?.accountIds && pairingData.accountIds?.length > 0 && (
           <div>
             <h3>Connected Accounts Details:</h3>
             <p>Network:{network}</p>
-            <p>Accounts: [{accountIds.reduce(conCatAccounts)}]</p>
+            <p>Accounts: [{pairingData?.accountIds && pairingData?.accountIds.reduce(conCatAccounts)}]</p>
           </div>
         )}
 
