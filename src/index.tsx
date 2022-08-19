@@ -1,17 +1,15 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { HashConnect } from "hashconnect";
-import "./index.css";
 import App from "./App";
+import {HashConnectAPIProvider} from "./HashConnectAPIProvider-1.10";
+import "./index.css";
 import reportWebVitals from "./reportWebVitals";
-import HashConnectProvider from "./HashConnectAPIProvider";
-const hashConnect = new HashConnect(true);
 
 ReactDOM.render(
   <React.StrictMode>
-    <HashConnectProvider hashConnect={hashConnect} debug>
+    <HashConnectAPIProvider debug>
       <App />
-    </HashConnectProvider>
+    </HashConnectAPIProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );
